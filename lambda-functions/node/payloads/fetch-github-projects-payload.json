@@ -6,7 +6,7 @@
     "method": "GET",
     "headers": {
       "Accept": "application/vnd.github.v3+json",
-      "User-Agent": "HpartidasDotGuru-Portfolio v1.0"
+      "User-Agent": "Portfolio Update Task v1.0"
     }
   }
 }
