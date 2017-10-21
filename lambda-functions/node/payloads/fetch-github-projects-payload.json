@@ -1,0 +1,12 @@
+{
+  "options": {
+    "hostname": "api.github.com",
+    "port": 443,
+    "path": "/user/repos?affiliation=owner",
+    "method": "GET",
+    "headers": {
+      "Accept": "application/vnd.github.v3+json",
+      "User-Agent": "Portfolio Update Task v1.0"
+    }
+  }
+}
