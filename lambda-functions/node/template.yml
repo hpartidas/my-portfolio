@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Fetch GitHub Projects
+
+Resources:
+
+  getGitHubProjectsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/fetch-github-projects.handler
+      Runtime: nodejs6.10
+      Events:
+        requestGitHubProjects:
+          Type: Schedule
+          Properties:
+            Schedule: rate(5 minutes)
