@@ -1,17 +1,27 @@
-version: 0.1
+version: 0.2
 
 phases:
-  build:
-    pre_build:
-      commands:
-        - npm install
-        - npm test
+  install:
     commands:
+      - echo Installing dependencies...
+      - npm install
+  pre_build:
+    commands:
+      - echo Running Tests...
+      - npm test
+  build:
+    commands:
+      - echo Building...
       - npm run webpack
 artifacts:
   files:
     - index.html
+    - apple-touch-icon.png
     - favicon.ico
+    - favicon-16x16.png
+    - favicon-32x32.png
+    - mstile-150x150.png
+    - safari-pinned-tab.svg
     - styles/*
     - images/*
     - dist/bundle.js
