@@ -60,3 +60,4 @@ typings/
 dist
 /.idea
 /lambda-functions/node/environment/
+package-lock.json

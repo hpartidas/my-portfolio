@@ -8,6 +8,7 @@ import os
 def lambda_handler(event, context):
     sns = boto3.resource('sns')
     topic = sns.Topic(os.environ['sns_topic_arn'])
+    s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
 
     location = {
         "bucketName": os.environ['build_bucket'],
@@ -21,12 +22,20 @@ def lambda_handler(event, context):
             for artifact in job["data"]["inputArtifacts"]:
                 if artifact["name"] == "MyAppBuild":
                     location = artifact["location"]["s3Location"]
+                    portfolio_bucket = s3.Bucket(os.environ['portfolio_bucket'])
+
+                if artifact["name"] == "dev-app-build":
+                    location = artifact["location"]["s3Location"]
+                    config = job["data"]["actionConfiguration"]["configuration"]["UserParameters"]
+                    config = config['config']
+                    print "Config: " + str(config)
+                    portfolio_bucket_name = config["portfolio_bucket"]
+                    portfolio_bucket = s3.Bucket(portfolio_bucket_name)
+        else:
+            portfolio_bucket = s3.Bucket(os.environ['portfolio_bucket'])
 
         print "Building portfolio from " + str(location)
 
-        s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
-
-        portfolio_bucket = s3.Bucket(os.environ['portfolio_bucket'])
         build_bucket = s3.Bucket(location["bucketName"])
 
         portfolio_zip = StringIO.StringIO()

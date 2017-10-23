@@ -1,0 +1,37 @@
+{
+  "CodePipeline.job": {
+    "data": {
+      "artifactCredentials": {
+        "secretAccessKey": "",
+        "accessKeyId": "",
+        "sessionToken": ""
+      },
+      "actionConfiguration": {
+        "configuration": {
+          "FunctionName": "deploy-portfolio",
+          "UserParameters": {
+            "config": {
+              "portfolio_bucket": "dev.hpartidas.guru"
+            }
+          }
+        }
+      },
+      "inputArtifacts": [
+        {
+          "location": {
+            "type": "S3",
+            "s3Location": {
+              "objectKey": "artifact-object-name",
+              "bucketName": "artifact-bucket"
+            }
+          },
+          "name": "dev-app-build",
+          "revision": "None"
+        }
+      ],
+      "outputArtifacts": []
+    },
+    "id": "d01c4408-52a9-4936-b22b-af8e86558ac1",
+    "accountId": ""
+  }
+}
