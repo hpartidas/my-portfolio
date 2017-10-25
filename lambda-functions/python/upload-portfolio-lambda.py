@@ -4,6 +4,7 @@ import StringIO
 import zipfile
 import mimetypes
 import os
+import json
 
 def lambda_handler(event, context):
     sns = boto3.resource('sns')
@@ -26,10 +27,9 @@ def lambda_handler(event, context):
 
                 if artifact["name"] == "dev-app-build":
                     location = artifact["location"]["s3Location"]
-                    config = job["data"]["actionConfiguration"]["configuration"]["UserParameters"]
-                    config = config['config']
+                    config = json.loads(job.get('data').get('actionConfiguration').get('configuration').get('UserParameters'))
                     print "Config: " + str(config)
-                    portfolio_bucket_name = config["portfolio_bucket"]
+                    portfolio_bucket_name = config.get('portfolio_bucket')
                     portfolio_bucket = s3.Bucket(portfolio_bucket_name)
         else:
             portfolio_bucket = s3.Bucket(os.environ['portfolio_bucket'])
