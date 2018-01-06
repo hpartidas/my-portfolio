@@ -9,11 +9,7 @@
       "actionConfiguration": {
         "configuration": {
           "FunctionName": "deploy-portfolio",
-          "UserParameters": {
-            "config": {
-              "portfolio_bucket": "dev.hpartidas.guru"
-            }
-          }
+          "UserParameters": "THIS IS ALWAYS A STRING"
         }
       },
       "inputArtifacts": [
