@@ -1,10 +1,7 @@
 import React from 'react';
-import 'core-src/es6/map';
-import 'core-src/es6/set';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ExampleWork, {ExampleWorkBubble} from '../components/example-work';
-import ExampleWorkModal from "../components/example-work-modal";
 
 global.requestAnimationFrme = function (callback) {
   setTimeout(callback, 0);
