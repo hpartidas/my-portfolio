@@ -4,24 +4,27 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
+      - cd web
       - npm install
   pre_build:
     commands:
       - echo Running Tests...
+      - cd web
       - npm test
   build:
     commands:
       - echo Building...
+      - cd web
       - npm run webpack
 artifacts:
   files:
-    - index.html
-    - apple-touch-icon.png
-    - favicon.ico
-    - favicon-16x16.png
-    - favicon-32x32.png
-    - mstile-150x150.png
-    - safari-pinned-tab.svg
-    - styles/*
-    - images/*
-    - dist/bundle.js
+    - web/index.html
+    - web/apple-touch-icon.png
+    - web/favicon.ico
+    - web/favicon-16x16.png
+    - web/favicon-32x32.png
+    - web/mstile-150x150.png
+    - web/safari-pinned-tab.svg
+    - web/styles/*
+    - web/images/*
+    - web/dist/bundle.src

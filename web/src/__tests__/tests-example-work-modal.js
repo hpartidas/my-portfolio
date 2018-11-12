@@ -1,9 +1,9 @@
 import React from 'react';
-import 'core-js/es6/map';
-import 'core-js/es6/set';
+import 'core-src/es6/map';
+import 'core-src/es6/set';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ExampleWorkModal from '../js/components/example-work-modal';
+import ExampleWorkModal from '../components/example-work-modal';
 
 global.requestAnimationFrme = function (callback) {
   setTimeout(callback, 0);
