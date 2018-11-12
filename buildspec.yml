@@ -9,7 +9,6 @@ phases:
   pre_build:
     commands:
       - echo Running Tests...
-      - cd web
       - npm test
   build:
     commands:
